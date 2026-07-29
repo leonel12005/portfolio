@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import TeamPage from './pages/TeamPage';
 import ProjectsPage from './pages/ProjectsPage';
-import ContactPage from './pages/ContactPage';
+import ContactPage from './pages/contactPage';
 
 
 function App() {
@@ -29,12 +29,19 @@ function App() {
         <Navbar />
 
         <main>
+
           <Routes>
+
             <Route path="/" element={<Home />} />
+
             <Route path="/equipe" element={<TeamPage />} />
+
             <Route path="/projets" element={<ProjectsPage />} />
+
             <Route path="/contact" element={<ContactPage />} />
+
           </Routes>
+
         </main>
 
         <Footer />
