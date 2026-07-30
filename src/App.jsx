@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import TeamPage from './pages/TeamPage';
 import ProjectsPage from './pages/ProjectsPage';
-import ContactPage from './pages/contactPage';
+import ContactPage from './pages/contactpage';
 
 
 function App() {
