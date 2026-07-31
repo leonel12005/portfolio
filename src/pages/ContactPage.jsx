@@ -1,29 +1,77 @@
-function TeamPage() {
+import { useState } from "react";
+
+function ContactPage() {
+  const [nom, setNom] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [confirmation, setConfirmation] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nom,
+        email,
+        message
+      })
+    });
+
+    const data = await response.json();
+
+    setConfirmation(data.message);
+
+    setNom("");
+    setEmail("");
+    setMessage("");
+  };
+
   return (
     <section>
-      <h2>Notre équipe</h2>
+      <h2>Contact</h2>
 
-      <div>
-        <h3>Membre 1</h3>
-        <p>Président de l'équipe</p>
-      </div>
+      <form onSubmit={handleSubmit}>
 
-      <div>
-        <h3>Membre 2</h3>
-        <p>Développeur Frontend</p>
-      </div>
+        <label htmlFor="nom">Nom</label>
+        <input
+          id="nom"
+          type="text"
+          value={nom}
+          onChange={(e) => setNom(e.target.value)}
+          required
+        />
 
-      <div>
-        <h3>Membre 3</h3>
-        <p>Développeur Backend</p>
-      </div>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-      <div>
-        <h3>Membre 4</h3>
-        <p>Designer UI/UX</p>
-      </div>
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+
+        <button type="submit">
+          Envoyer
+        </button>
+
+      </form>
+
+      <p>{confirmation}</p>
+
     </section>
   );
 }
 
-export default TeamPage;
+export default ContactPage;
