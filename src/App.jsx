@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import TeamPage from './pages/TeamPage';
 import ProjectsPage from './pages/ProjectsPage';
-import TempContact from './pages/TempContact';
+import ContactPage from './pages/ContactPage';
 
 
 function App() {
@@ -39,7 +39,6 @@ function App() {
             <Route path="/projets" element={<ProjectsPage />} />
 
             <Route path="/contact" element={<ContactPage />} />
-
           </Routes>
 
         </main>
